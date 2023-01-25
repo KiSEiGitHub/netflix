@@ -1,15 +1,13 @@
 import { Heading } from "@chakra-ui/react";
 
 interface Title {
-  children: React.ReactNode;
-  variant: "dark" | "light" | "system";
-  textAlign: "center" | "justify";
+   children: React.ReactNode;
 }
 
-export const Title = ({ children, variant, textAlign, ...props }: Title) => {
-  return (
-    <Heading variant={variant} {...props}>
-      {children}
-    </Heading>
-  );
+export const Title = ({ children, ...props }: Title) => {
+   return (
+      <Heading variant="Title" {...props}>
+         {children}
+      </Heading>
+   );
 };
