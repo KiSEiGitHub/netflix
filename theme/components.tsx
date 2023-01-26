@@ -6,12 +6,15 @@ const { dark, light } = colors;
 export const components = {
    Heading: {
       baseStyle: {
-         fontWeight: 500,
+         fontWeight: 600,
       },
       variants: {
          Title: (props: any) => ({
-            color: mode("#000", dark.text.title)(props),
-            fontSize: '1.7em'
+            color: mode("#000", dark.text.para.secondary)(props),
+            transition: "0.3s",
+            _hover: {
+               color: mode("#000", dark.text.title)(props),
+            },
          }),
       },
    },

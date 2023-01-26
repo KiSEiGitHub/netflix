@@ -13,4 +13,6 @@ export const colors = {
    },
 
    light: {},
+
+   blueTeal: "#54b9c5",
 };
