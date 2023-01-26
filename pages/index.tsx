@@ -1,14 +1,17 @@
+import { fetchContext } from "@/context/fetchContext";
 import Caroussel from "@/ui/caroussel";
 import Layout from "@/ui/Layout";
 import Section from "@/ui/Section";
 import Top from "@/ui/Top";
 import { GetServerSideProps } from "next";
+import { useContext } from "react";
 
-export default function Home({ movies, topMovies, upcoming, muchMovies }: any) {
+export default function Home({ topMovies, upcoming, muchMovies }: any) {
+   const { popular } = useContext(fetchContext);
    return (
       <Layout title='Home'>
          <Section title='Appréciés sur Netflix' fullMovies={muchMovies}>
-            <Caroussel arrayFilm={movies} />
+            <Caroussel arrayFilm={popular} />
          </Section>
 
          <Section title='Top des films' fullMovies={muchMovies}>
@@ -23,15 +26,6 @@ export default function Home({ movies, topMovies, upcoming, muchMovies }: any) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-   const res = await fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_APP_API_KEY}`
-   );
-   const { results } = await res.json();
-   results.forEach(
-      (o: any) =>
-         (o.img = "https://image.tmdb.org/t/p/w500/" + o["poster_path"])
-   );
-
    // get top rated
    const resTop = await fetch(
       `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.NEXT_PUBLIC_APP_API_KEY}`
@@ -64,7 +58,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
    return {
       props: {
-         movies: results,
          topMovies: topMovie,
          upcoming: upMovie,
          muchMovies: muchMovies,

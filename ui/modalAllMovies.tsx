@@ -1,17 +1,18 @@
+import { fetchContext } from "@/context/fetchContext";
 import {
    Box,
-   useDisclosure,
+   Flex,
+   Heading,
    Modal,
-   ModalOverlay,
-   ModalContent,
-   ModalHeader,
-   ModalFooter,
    ModalBody,
    ModalCloseButton,
-   Heading,
+   ModalContent,
+   ModalHeader,
+   ModalOverlay,
    useColorModeValue,
-   Flex,
+   useDisclosure,
 } from "@chakra-ui/react";
+import { useContext } from "react";
 import { Title } from "./Section";
 
 interface PropsModal {
@@ -22,6 +23,8 @@ interface PropsModal {
 function ModalAllMovies({ title, movies }: PropsModal) {
    const { isOpen, onOpen, onClose } = useDisclosure();
    const [a, b, c] = movies;
+   const { popular } = useContext(fetchContext);
+   console.log(popular);
 
    return (
       <>
