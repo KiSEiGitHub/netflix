@@ -11,6 +11,7 @@ export const components = {
       variants: {
          Title: (props: any) => ({
             color: mode("#000", dark.text.title)(props),
+            fontSize: '1.7em'
          }),
       },
    },
