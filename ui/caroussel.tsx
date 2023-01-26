@@ -1,9 +1,13 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Image, Text } from "@chakra-ui/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-function Caroussel() {
+interface CarousselProps {
+  arrayFilm: Array<any>;
+}
+
+function Caroussel({ arrayFilm }: CarousselProps) {
   return (
     <>
       <Swiper
@@ -48,10 +52,17 @@ function Caroussel() {
         }}
         className="mySwiper"
       >
-        {[1, 2, 3, 4, 5, 6, 7, 9].map((item: any, key: number) => (
+        {arrayFilm.map((item: any, key: number) => (
           <SwiperSlide key={key}>
-            <Box bg="red" h="160px" borderRadius="lg">
-              <Text>{item}</Text>
+            <Box h="175px" borderRadius="lg">
+              <Image
+                src={item.img}
+                alt="ok"
+                w="full"
+                h="full"
+                borderRadius="lg"
+                objectFit="cover"
+              />
             </Box>
           </SwiperSlide>
         ))}

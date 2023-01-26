@@ -9,7 +9,7 @@ interface SectionProps {
 function Section({ children, title }: SectionProps) {
   return (
     <Container maxW="100%" px={0}>
-      <Heading variant="Title" mb={2}>{title}</Heading>
+      <Heading variant="Title" mb={3}>{title}</Heading>
       {children}
     </Container>
   );

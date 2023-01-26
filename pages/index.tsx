@@ -1,40 +1,23 @@
 import Caroussel from "@/ui/caroussel";
 import Layout from "@/ui/Layout";
 import Section from "@/ui/Section";
-import Top from "@/ui/Top";
 import { getServerSideProps } from "./ssr/getMovies";
 
-export default function Home({ movies }: any) {
-  console.log(movies);
+export default function Home({ movies, topMovies, upcoming }: any) {
+  console.log(upcoming);
 
   return (
     <Layout title="Home">
       <Section title="Appréciés sur Netflix">
-        <Caroussel />
+        <Caroussel arrayFilm={movies} />
       </Section>
 
-      <Section title="Tendances actuelless">
-        <Caroussel />
+      <Section title="Top des films">
+        <Caroussel arrayFilm={topMovies} />
       </Section>
 
-      <Section title="Top 10 des séries aujourd'hui : France">
-        <Top />
-      </Section>
-
-      <Section title="Séries internationales">
-        <Caroussel />
-      </Section>
-
-      <Section title="Séries japonaise">
-        <Caroussel />
-      </Section>
-
-      <Section title="Revoir">
-        <Caroussel />
-      </Section>
-
-      <Section title="Nouveautés">
-        <Caroussel />
+      <Section title="Upcoming movies">
+        <Caroussel arrayFilm={upcoming} />
       </Section>
     </Layout>
   );
