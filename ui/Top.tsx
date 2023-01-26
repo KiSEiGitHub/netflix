@@ -4,8 +4,6 @@ import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 function Top({ top }: any) {
-   console.log(top.slice(0, 9));
-
    return (
       <>
          <Swiper
