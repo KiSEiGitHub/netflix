@@ -57,7 +57,7 @@ function Top() {
                 top="40%"
                 color="#000"
                 fontWeight={800}
-                textShadow="4px 3px 0px #fff, 9px 8px 0px rgba(87, 87, 87);"
+                textShadow="#4f4f4f 1px 10px 0;"
                 left="30%"
                 transform="translate(-50%, -50%)"
               >
