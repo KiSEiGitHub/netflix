@@ -12,6 +12,7 @@ export default function Home() {
    const { pop } = useContext(fetchContext);
    const { top } = useContext(fetchContext);
    const { up } = useContext(fetchContext);
+   const { tv } = useContext(fetchContext);
 
    useEffect(() => {
       setTimeout(() => {
@@ -36,6 +37,10 @@ export default function Home() {
 
                <Section title='Upcoming movies' fullMovies={up.two}>
                   <Caroussel arrayFilm={up.one} />
+               </Section>
+
+               <Section title='Séries TV' fullMovies={tv.two}>
+                  <Caroussel arrayFilm={tv.one} />
                </Section>
             </>
          )}

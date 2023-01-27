@@ -66,6 +66,7 @@ const ContextFetch = ({ children }: any) => {
    const [pop, setPop] = useState<any>({});
    const [top, setTop] = useState<any>({});
    const [up, setUp] = useState<any>({});
+   const [tv, setTv] = useState<any>({});
 
    const GetMovies = async () => {
       setPop(
@@ -85,6 +86,12 @@ const ContextFetch = ({ children }: any) => {
             `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.NEXT_PUBLIC_APP_API_KEY}`
          )
       );
+
+      setTv(
+         await useFetchGlobal(
+            `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.NEXT_PUBLIC_APP_API_KEY}`
+         )
+      );
    };
 
    useEffect(() => {
@@ -97,6 +104,7 @@ const ContextFetch = ({ children }: any) => {
             pop,
             top,
             up,
+            tv,
          }}
       >
          {children}

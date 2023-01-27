@@ -32,10 +32,12 @@ function ModalAllMovies({ title, movies }: PropsModal) {
          <Modal isOpen={isOpen} onClose={onClose} size='6xl'>
             <ModalOverlay />
             <ModalContent
-               bg={useColorModeValue("light.secondary", "dark.primary")}
+               bg={useColorModeValue("dark.primary", "dark.primary")}
             >
                <ModalHeader>
-                  <Heading textAlign='center'>{title}</Heading>
+                  <Heading textAlign='center' variant='Title'>
+                     {title}
+                  </Heading>
                </ModalHeader>
                <ModalCloseButton />
                <ModalBody>

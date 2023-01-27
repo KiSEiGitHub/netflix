@@ -1,14 +1,8 @@
-import {
-   Flex,
-   Skeleton,
-   SkeletonCircle,
-   SkeletonText,
-   Stack,
-} from "@chakra-ui/react";
+import { Flex, Skeleton, Stack } from "@chakra-ui/react";
 
 function SkeletonHome() {
    return (
-      <Stack spacing={5}>
+      <Stack spacing={5} w='100%'>
          <Stack px={10}>
             <Skeleton
                height='55px'

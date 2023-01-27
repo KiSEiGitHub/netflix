@@ -1,7 +1,7 @@
 import { colors } from "./colors";
 import { mode } from "@chakra-ui/theme-tools";
 
-const { dark, light } = colors;
+const { dark } = colors;
 
 export const components = {
    Heading: {
@@ -10,10 +10,13 @@ export const components = {
       },
       variants: {
          Title: (props: any) => ({
-            color: mode("#000", dark.text.para.secondary)(props),
+            color: mode(
+               dark.text.para.secondary,
+               dark.text.para.secondary
+            )(props),
             transition: "0.3s",
             _hover: {
-               color: mode("#000", dark.text.title)(props),
+               color: mode(dark.text.title, dark.text.title)(props),
             },
          }),
       },
