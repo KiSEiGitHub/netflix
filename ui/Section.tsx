@@ -1,6 +1,6 @@
-import { Container, Heading, HStack, Text } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { Container, Heading, HStack } from "@chakra-ui/react";
 import { AnimatePresence, motion as m } from "framer-motion";
+import React, { useState } from "react";
 import ModalAllMovies from "./modalAllMovies";
 
 interface SectionProps {

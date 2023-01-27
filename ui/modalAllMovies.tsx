@@ -1,4 +1,3 @@
-import { fetchContext } from "@/context/fetchContext";
 import {
    Box,
    Flex,
@@ -11,8 +10,8 @@ import {
    ModalOverlay,
    useColorModeValue,
    useDisclosure,
+   Image,
 } from "@chakra-ui/react";
-import { useContext } from "react";
 import { Title } from "./Section";
 
 interface PropsModal {
@@ -23,9 +22,6 @@ interface PropsModal {
 function ModalAllMovies({ title, movies }: PropsModal) {
    const { isOpen, onOpen, onClose } = useDisclosure();
    const [a, b, c] = movies;
-   const { popular } = useContext(fetchContext);
-   console.log(popular);
-
    return (
       <>
          <Box onClick={onOpen}>
@@ -42,13 +38,57 @@ function ModalAllMovies({ title, movies }: PropsModal) {
                </ModalHeader>
                <ModalCloseButton />
                <ModalBody>
-                  <Flex flexWrap='wrap' gap={5} justifyContent='center' mb={4}>
-                     {a.map((item: any, key: number) => (
-                        <Box mt={4} key={key} w='250px' h='175px' bg='teal'>
-                           1
-                        </Box>
-                     ))}
-                  </Flex>
+                  {movies.length && (
+                     <Flex
+                        flexWrap='wrap'
+                        gap={5}
+                        justifyContent='center'
+                        mb={4}
+                     >
+                        {a.map((item: any, key: number) => (
+                           <Box mt={4} key={key} w='320px' h='450px'>
+                              <Image
+                                 _hover={{ transform: "scale(0.98)" }}
+                                 transition='0.3s'
+                                 alt='photo'
+                                 src={item.img}
+                                 objectFit='cover'
+                                 h='full'
+                                 w='full'
+                                 borderRadius='lg'
+                              />
+                           </Box>
+                        ))}
+                        {b.map((item: any, key: number) => (
+                           <Box mt={4} key={key} w='320px' h='450px'>
+                              <Image
+                                 _hover={{ transform: "scale(0.98)" }}
+                                 transition='0.3s'
+                                 alt='photo'
+                                 src={item.img}
+                                 objectFit='cover'
+                                 h='full'
+                                 w='full'
+                                 borderRadius='lg'
+                              />
+                           </Box>
+                        ))}
+                        {c.map((item: any, key: number) => (
+                           <Box mt={4} key={key} w='320px' h='450px'>
+                              <Image
+                                 _hover={{ transform: "scale(0.98)" }}
+                                 transition='0.3s'
+                                 alt='photo'
+                                 src={item.img}
+                                 objectFit='cover'
+                                 h='full'
+                                 w='full'
+                                 borderRadius='lg'
+                              />
+                           </Box>
+                        ))}
+                     </Flex>
+                  )}
                </ModalBody>
             </ModalContent>
          </Modal>
