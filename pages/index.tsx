@@ -2,30 +2,43 @@ import { fetchContext } from "@/context/fetchContext";
 import Caroussel from "@/ui/caroussel";
 import Layout from "@/ui/Layout";
 import Section from "@/ui/Section";
+import SkeletonHome from "@/ui/skeleton/home";
 import Top from "@/ui/Top";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 export default function Home() {
-   const { popular } = useContext(fetchContext);
-   const { topRated } = useContext(fetchContext);
-   const { upComming } = useContext(fetchContext);
-   const { muchPopular } = useContext(fetchContext);
-   const { muchTopRated } = useContext(fetchContext);
-   const { muchUpComming } = useContext(fetchContext);
+   const [load, setload] = useState(true);
+
+   const { pop } = useContext(fetchContext);
+   const { top } = useContext(fetchContext);
+   const { up } = useContext(fetchContext);
+
+   useEffect(() => {
+      setTimeout(() => {
+         setload(false);
+      }, 1500);
+   }, []);
+
+   if (load) {
+      return <SkeletonHome />;
+   }
 
    return (
       <Layout title='Home'>
-         <Section title='Appréciés sur Netflix' fullMovies={muchPopular}>
-            <Caroussel arrayFilm={popular} />
-         </Section>
+         {!load && (
+            <>
+               <Section title='Appréciés sur Netflix' fullMovies={pop.two}>
+                  <Caroussel arrayFilm={pop.one} />
+               </Section>
+               <Section title='Top des films' fullMovies={top.two}>
+                  <Top top={top.one} />
+               </Section>
 
-         <Section title='Top des films' fullMovies={muchTopRated}>
-            <Top top={topRated} />
-         </Section>
-
-         <Section title='Upcoming movies' fullMovies={muchUpComming}>
-            <Caroussel arrayFilm={upComming} />
-         </Section>
+               <Section title='Upcoming movies' fullMovies={up.two}>
+                  <Caroussel arrayFilm={up.one} />
+               </Section>
+            </>
+         )}
       </Layout>
    );
 }

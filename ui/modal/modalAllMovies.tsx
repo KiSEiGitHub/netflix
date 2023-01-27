@@ -12,7 +12,7 @@ import {
    useDisclosure,
    Image,
 } from "@chakra-ui/react";
-import { Title } from "./Section";
+import { Title } from "../Section";
 
 interface PropsModal {
    title: string;
@@ -22,6 +22,7 @@ interface PropsModal {
 function ModalAllMovies({ title, movies }: PropsModal) {
    const { isOpen, onOpen, onClose } = useDisclosure();
    const [a, b, c] = movies;
+
    return (
       <>
          <Box onClick={onOpen}>
