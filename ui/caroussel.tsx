@@ -1,4 +1,4 @@
-import { Box, Image } from "@chakra-ui/react";
+import { Box, Image, Link } from "@chakra-ui/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -65,17 +65,19 @@ function Caroussel({ arrayFilm, id }: CarousselProps) {
                      }}
                      borderRadius='lg'
                   >
-                     <Image
-                        transition='0.3s ease-out'
-                        _hover={{ transform: "scale(0.98)" }}
-                        src={id == "movies" ? item.img : item.animeImg}
-                        alt='ok'
-                        w='full'
-                        h='full'
-                        pos='absolute'
-                        borderRadius='lg'
-                        objectFit='cover'
-                     />
+                     <Link href={`/browse/movie/${item.id}`}>
+                        <Image
+                           transition='0.3s ease-out'
+                           _hover={{ transform: "scale(0.98)" }}
+                           src={id == "movies" ? item.img : item.animeImg}
+                           alt='ok'
+                           w='full'
+                           h='full'
+                           pos='absolute'
+                           borderRadius='lg'
+                           objectFit='cover'
+                        />
+                     </Link>
                   </Box>
                </SwiperSlide>
             ))}

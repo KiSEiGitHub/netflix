@@ -1,7 +1,7 @@
 import GenreNav from "@/components/GenreNav";
 import Layout from "@/ui/Layout";
 import SkeletonHome from "@/ui/skeleton/home";
-import { Flex, Image } from "@chakra-ui/react";
+import { Box, Flex, Image } from "@chakra-ui/react";
 import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
 
@@ -23,22 +23,23 @@ export default function MovieByGenre({ movie, genre }: any) {
          <GenreNav title={genre[0].name} />
          <Flex flexWrap='wrap' justifyContent='space-between' gap={4} mt={4}>
             {movie.map((item: any, key: number) => (
-               <Image
-                  key={key}
-                  alt='ok'
-                  src={item.img}
-                  h={{
-                     sm: "175px",
-                     md: "250px",
-                     lg: "350px",
-                     xl: "430px",
-                     "2xl": "600px",
-                  }}
-                  objectFit='cover'
-                  borderRadius='lg'
-                  _hover={{ transform: "scale(0.98)" }}
-                  transition='0.3s'
-               />
+               <Box key={key}>
+                  <Image
+                     alt='ok'
+                     src={item.img}
+                     h={{
+                        sm: "175px",
+                        md: "250px",
+                        lg: "350px",
+                        xl: "430px",
+                        "2xl": "600px",
+                     }}
+                     objectFit='cover'
+                     borderRadius='lg'
+                     _hover={{ transform: "scale(0.98)" }}
+                     transition='0.3s'
+                  />
+               </Box>
             ))}
          </Flex>
       </Layout>

@@ -19,6 +19,23 @@ export const components = {
                color: mode(dark.text.title, dark.text.title)(props),
             },
          }),
+
+         Netflix: (props: any) => ({
+            color: mode(dark.text.para.primary, dark.text.para.primary)(props),
+            fontSize: "4em",
+         }),
+      },
+   },
+
+   Text: {
+      variants: {
+         Para: (props: any) => ({
+            color: mode(
+               dark.text.para.secondary,
+               dark.text.para.secondary
+            )(props),
+            lineHeight: 6,
+         }),
       },
    },
 
