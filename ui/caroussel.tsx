@@ -65,11 +65,17 @@ function Caroussel({ arrayFilm, id }: CarousselProps) {
                      }}
                      borderRadius='lg'
                   >
-                     <Link href={`/browse/movie/${item.id}`}>
+                     <Link
+                        href={
+                           id === "movies"
+                              ? `/browse/movie/${item.id}`
+                              : `/browse/anime/${item.id}`
+                        }
+                     >
                         <Image
                            transition='0.3s ease-out'
                            _hover={{ transform: "scale(0.98)" }}
-                           src={id == "movies" ? item.img : item.animeImg}
+                           src={id === "movies" ? item.img : item.image}
                            alt='ok'
                            w='full'
                            h='full'

@@ -46,7 +46,7 @@ function Nav() {
             <HStack spacing={4}>
                <ItemNav href='/'>Home</ItemNav>
                <ItemNav href='/movies'>Movies</ItemNav>
-               {/* <ItemNav href='/animes'>Animes</ItemNav> */}
+               <ItemNav href='/animes'>Animes</ItemNav>
             </HStack>
          </HStack>
          <Button

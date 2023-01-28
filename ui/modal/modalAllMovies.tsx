@@ -55,7 +55,7 @@ function ModalAllMovies({ title, movies, id }: PropsModal) {
                                  _hover={{ transform: "scale(0.98)" }}
                                  transition='0.3s'
                                  alt='photo'
-                                 src={id == "animes" ? item.animeImg : item.img}
+                                 src={id == "animes" ? item.image : item.img}
                                  objectFit='cover'
                                  h='full'
                                  w='full'
@@ -69,7 +69,7 @@ function ModalAllMovies({ title, movies, id }: PropsModal) {
                                  _hover={{ transform: "scale(0.98)" }}
                                  transition='0.3s'
                                  alt='photo'
-                                 src={id == "animes" ? item.animeImg : item.img}
+                                 src={id == "animes" ? item.image : item.img}
                                  objectFit='cover'
                                  h='full'
                                  w='full'
@@ -83,7 +83,7 @@ function ModalAllMovies({ title, movies, id }: PropsModal) {
                                  _hover={{ transform: "scale(0.98)" }}
                                  transition='0.3s'
                                  alt='photo'
-                                 src={id == "animes" ? item.animeImg : item.img}
+                                 src={id == "animes" ? item.image : item.img}
                                  objectFit='cover'
                                  h='full'
                                  w='full'

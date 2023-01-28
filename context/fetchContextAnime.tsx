@@ -3,21 +3,32 @@ import { createContext, useState, useEffect } from "react";
 
 export const FetchContextAnime = createContext<any>(null);
 
-const useFetchAnime = async (url: string) => {
-   const res = await fetch(url);
-   const data = await res.json();
-   return data;
-};
-
-const useFetchAnimeGlobal = async (url: string) => {
+const useFetchGenre = async (url: string, genre: string) => {
    let array: Array<any> = [];
-   for (let i = 1; i <= 4; i++) {
-      const res = await fetch(url + `?page=${i}`);
-      const data = await res.json();
-      array = [...array, data];
+   for (let i = 1; i <= 5; i++) {
+      const res = await fetch(url + `?genres=["${genre}"]&page=${i}`);
+      const { results } = await res.json();
+      array = [...array, results];
    }
 
-   const [a, b, c, d] = array;
+   const [a, b, c, d, e] = array;
+
+   return {
+      one: a,
+      two: [b, c, d],
+   };
+};
+
+const useFetch = async (url: string) => {
+   let array: Array<any> = [];
+   for (let i = 1; i <= 5; i++) {
+      const res = await fetch(url + `?page=${i}`);
+      const { results } = await res.json();
+      array = [...array, results];
+   }
+
+   const [a, b, c, d, e] = array;
+
    return {
       one: a,
       two: [b, c, d],
@@ -29,34 +40,32 @@ const AnimeContext = ({ children }: AnimeContext) => {
    const [topAiring, setTopAiring] = useState<any>({});
    const [action, setAction] = useState<any>({});
    const [aventure, setAventure] = useState<any>({});
-   const [demons, setDemons] = useState<any>({});
-   const [ecchi, setEcchi] = useState<any>({});
+   const [mecha, setMecha] = useState<any>({});
 
    const GetAnime = async () => {
       setPopular(
-         await useFetchAnimeGlobal("https://gogoanime.consumet.org/popular")
+         await useFetch("https://api.consumet.org/meta/anilist/popular")
       );
 
       setAction(
-         await useFetchAnimeGlobal(
-            "https://gogoanime.consumet.org/genre/action"
+         await useFetchGenre(
+            "https://api.consumet.org/meta/anilist/genre",
+            "Action"
          )
       );
+
       setAventure(
-         await useFetchAnimeGlobal(
-            "https://gogoanime.consumet.org/genre/adventure"
+         await useFetchGenre(
+            "https://api.consumet.org/meta/anilist/genre",
+            "Adventure"
          )
       );
-      setDemons(
-         await useFetchAnimeGlobal(
-            "https://gogoanime.consumet.org/genre/demons"
+
+      setMecha(
+         await useFetchGenre(
+            "https://api.consumet.org/meta/anilist/genre",
+            "Mecha"
          )
-      );
-      setEcchi(
-         await useFetchAnimeGlobal("https://gogoanime.consumet.org/genre/ecchi")
-      );
-      setTopAiring(
-         await useFetchAnimeGlobal("https://gogoanime.consumet.org/top-airing")
       );
    };
 
@@ -71,8 +80,7 @@ const AnimeContext = ({ children }: AnimeContext) => {
             topAiring,
             action,
             aventure,
-            demons,
-            ecchi,
+            mecha,
          }}
       >
          {children}

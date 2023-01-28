@@ -1,74 +1,74 @@
 export const AnimeGenre = [
    {
       id: 1,
-      name: "action",
+      name: "Action",
    },
    {
       id: 2,
-      name: "adventure",
+      name: "Adventure",
    },
    {
       id: 3,
-      name: "comedy",
+      name: "Comedy",
    },
    {
       id: 4,
-      name: "crime",
+      name: "Crime",
    },
    {
       id: 5,
-      name: "dementia",
+      name: "Dementia",
    },
    {
       id: 6,
-      name: "demons",
+      name: "Demons",
    },
    {
       id: 7,
-      name: "dramas",
+      name: "Dramas",
    },
    {
       id: 8,
-      name: "ecchi",
+      name: "Ecchi",
    },
    {
       id: 9,
-      name: "fantasy",
+      name: "Fantasy",
    },
    {
       id: 10,
-      name: "game",
+      name: "Game",
    },
    {
       id: 11,
-      name: "harem",
+      name: "Harem",
    },
    {
       id: 12,
-      name: "horror",
+      name: "Horror",
    },
    {
       id: 13,
-      name: "magic",
+      name: "Magic",
    },
    {
       id: 14,
-      name: "romance",
+      name: "Romance",
    },
    {
       id: 15,
-      name: "school",
+      name: "School",
    },
    {
       id: 16,
-      name: "mecha",
+      name: "Mecha",
    },
    {
       id: 17,
-      name: "samurai",
+      name: "Samurai",
    },
    {
       id: 18,
-      name: "seinen",
+      name: "Seinen",
    },
 ];

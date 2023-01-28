@@ -1,52 +1,33 @@
 import GenreAnimeNav from "@/components/GenreAnimeNav";
-import { fetchContext } from "@/context/fetchContext";
 import { FetchContextAnime } from "@/context/fetchContextAnime";
 import Caroussel from "@/ui/caroussel";
 import Layout from "@/ui/Layout";
 import Section from "@/ui/Section";
 import SkeletonHome from "@/ui/skeleton/home";
-import Top from "@/ui/Top";
 import { useContext, useEffect, useState } from "react";
 
 export default function Animes() {
    const [load, setload] = useState(true);
-   const { popular } = useContext(FetchContextAnime);
-   const { topAiring } = useContext(FetchContextAnime);
-   const { action } = useContext(FetchContextAnime);
-   const { aventure } = useContext(FetchContextAnime);
-   const { demons } = useContext(FetchContextAnime);
-   const { ecchi } = useContext(FetchContextAnime);
+   const { popular, action, aventure, mecha } = useContext(FetchContextAnime);
+   console.log(mecha);
 
    useEffect(() => {
       if (Object.keys(popular).length > 0 && popular.constructor === Object) {
-         if (
-            Object.keys(aventure).length > 0 &&
-            aventure.constructor === Object
-         ) {
+         if (Object.keys(action).length > 0 && action.constructor === Object) {
             if (
-               Object.keys(demons).length > 0 &&
-               demons.constructor === Object
+               Object.keys(aventure).length > 0 &&
+               aventure.constructor === Object
             ) {
                if (
-                  Object.keys(ecchi).length > 0 &&
-                  ecchi.constructor === Object
+                  Object.keys(mecha).length > 0 &&
+                  mecha.constructor === Object
                ) {
-                  if (
-                     Object.keys(action).length > 0 &&
-                     action.constructor === Object
-                  ) {
-                     if (
-                        Object.keys(topAiring).length > 0 &&
-                        topAiring.constructor === Object
-                     ) {
-                        setload(false);
-                     }
-                  }
+                  setload(false);
                }
             }
          }
       }
-   }, [popular, aventure, demons, ecchi, action, topAiring]);
+   }, [popular, action, aventure, mecha]);
 
    if (load) {
       return <SkeletonHome />;
@@ -55,27 +36,24 @@ export default function Animes() {
    return (
       <Layout title='Animes'>
          <GenreAnimeNav title='Anime' />
-         <Section title='Animes populaire' fullMovies={popular.two} id='animes'>
+         <Section title='Anime populaire' id='animes' fullMovies={popular.two}>
             <Caroussel arrayFilm={popular.one} id='animes' />
          </Section>
-         <Section
-            title='Anime du moment'
-            fullMovies={topAiring.two}
-            id='animes'
-         >
-            <Top top={topAiring.one} id={2} />
-         </Section>
-         <Section title='Aventure' fullMovies={aventure.two} id='animes'>
-            <Caroussel arrayFilm={aventure.one} id='animes' />
-         </Section>
-         <Section title='Action' fullMovies={action.two} id='animes'>
+
+         <Section title="Anime d'action" id='animes' fullMovies={action.two}>
             <Caroussel arrayFilm={action.one} id='animes' />
          </Section>
-         <Section title='Demons' fullMovies={demons.two} id='animes'>
-            <Caroussel arrayFilm={demons.one} id='animes' />
+
+         <Section
+            title="Anime d'aventure"
+            id='animes'
+            fullMovies={aventure.two}
+         >
+            <Caroussel arrayFilm={aventure.one} id='animes' />
          </Section>
-         <Section title='Ecchi' fullMovies={ecchi.two} id='animes'>
-            <Caroussel arrayFilm={ecchi.one} id='animes' />
+
+         <Section title='Anime mecha' id='animes' fullMovies={mecha.two}>
+            <Caroussel arrayFilm={mecha.one} id='animes' />
          </Section>
       </Layout>
    );

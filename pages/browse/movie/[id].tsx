@@ -26,7 +26,6 @@ import { useEffect, useState } from "react";
 
 export default function MovieId({ movie, reviews, similar, credits }: any) {
    const [load, setLoad] = useState<boolean>(true);
-   console.log(credits);
 
    useEffect(() => {
       if (movie) {
