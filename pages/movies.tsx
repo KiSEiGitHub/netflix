@@ -10,10 +10,11 @@ import { useContext, useEffect, useState } from "react";
 export default function Movies({ genres }: any) {
    const [load, setload] = useState(true);
 
-   const { pop } = useContext(fetchContext);
-   const { top } = useContext(fetchContext);
-   const { up } = useContext(fetchContext);
-   const { tv } = useContext(fetchContext);
+   const { action } = useContext(fetchContext);
+   const { aventure } = useContext(fetchContext);
+   const { horror } = useContext(fetchContext);
+   const { animation } = useContext(fetchContext);
+   const { fantasy } = useContext(fetchContext);
 
    useEffect(() => {
       setTimeout(() => {
@@ -48,19 +49,24 @@ export default function Movies({ genres }: any) {
          </Box>
          {!load && (
             <>
-               <Section title='Appréciés sur Netflix' fullMovies={pop.two}>
-                  <Caroussel arrayFilm={pop.one} />
-               </Section>
-               <Section title='Top des films' fullMovies={top.two}>
-                  <Top top={top.one} />
+               <Section title='Action' fullMovies={action.two}>
+                  <Caroussel arrayFilm={action.one} />
                </Section>
 
-               <Section title='Upcoming movies' fullMovies={up.two}>
-                  <Caroussel arrayFilm={up.one} />
+               <Section title='Aventure' fullMovies={aventure.two}>
+                  <Caroussel arrayFilm={aventure.one} />
                </Section>
 
-               <Section title='Séries TV' fullMovies={tv.two}>
-                  <Caroussel arrayFilm={tv.one} />
+               <Section title='Horror' fullMovies={horror.two}>
+                  <Caroussel arrayFilm={horror.one} />
+               </Section>
+
+               <Section title='Animation' fullMovies={animation.two}>
+                  <Caroussel arrayFilm={animation.one} />
+               </Section>
+
+               <Section title='Fantasy' fullMovies={fantasy.two}>
+                  <Caroussel arrayFilm={fantasy.one} />
                </Section>
             </>
          )}

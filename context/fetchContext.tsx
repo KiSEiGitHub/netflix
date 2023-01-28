@@ -2,33 +2,6 @@ import { createContext, useEffect, useState } from "react";
 
 export const fetchContext = createContext<any>(null);
 
-const useFetch = async (url: string) => {
-   const res = await fetch(url);
-   const { results: data } = await res.json();
-   data.forEach(
-      (o: any) =>
-         (o.img = "https://image.tmdb.org/t/p/w500/" + o["poster_path"])
-   );
-
-   return data;
-};
-
-const useFetchMuch = async (url: string) => {
-   let array: Array<any> = [];
-   for (let i = 1; i <= 3; i++) {
-      const res = await fetch(url + `&page=${i}`);
-      const { results } = await res.json();
-      results.forEach(
-         (o: any) =>
-            (o.img = "https://image.tmdb.org/t/p/w500/" + o["poster_path"])
-      );
-
-      array = [...array, results];
-   }
-
-   return array;
-};
-
 const useFetchGlobal = async (url: string) => {
    // définit le tableau
    let array: Array<any> = [];
@@ -68,6 +41,12 @@ const ContextFetch = ({ children }: any) => {
    const [up, setUp] = useState<any>({});
    const [tv, setTv] = useState<any>({});
 
+   const [action, setAction] = useState<any>({});
+   const [aventure, setAventure] = useState<any>({});
+   const [horror, setHorror] = useState<any>({});
+   const [animation, setAnimation] = useState<any>({});
+   const [fantasy, setFantasy] = useState<any>({});
+
    const GetMovies = async () => {
       setPop(
          await useFetchGlobal(
@@ -92,6 +71,36 @@ const ContextFetch = ({ children }: any) => {
             `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.NEXT_PUBLIC_APP_API_KEY}`
          )
       );
+
+      setAction(
+         await useFetchGlobal(
+            `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_APP_API_KEY}&with_genres=28`
+         )
+      );
+
+      setAventure(
+         await useFetchGlobal(
+            `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_APP_API_KEY}&with_genres=12`
+         )
+      );
+
+      setHorror(
+         await useFetchGlobal(
+            `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_APP_API_KEY}&with_genres=27`
+         )
+      );
+
+      setAnimation(
+         await useFetchGlobal(
+            `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_APP_API_KEY}&with_genres=16`
+         )
+      );
+
+      setFantasy(
+         await useFetchGlobal(
+            `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_APP_API_KEY}&with_genres=14`
+         )
+      );
    };
 
    useEffect(() => {
@@ -105,6 +114,11 @@ const ContextFetch = ({ children }: any) => {
             top,
             up,
             tv,
+            action,
+            aventure,
+            horror,
+            animation,
+            fantasy,
          }}
       >
          {children}
