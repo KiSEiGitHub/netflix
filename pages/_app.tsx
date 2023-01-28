@@ -1,5 +1,6 @@
 import Nav from "@/components/Nav";
 import ContextFetch from "@/context/fetchContext";
+import AnimeContext from "@/context/fetchContextAnime";
 import { theme } from "@/theme/theme";
 import { ChakraProvider } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
@@ -16,7 +17,9 @@ export default function App({ Component, pageProps }: AppProps) {
          <Nav />
          <AnimatePresence>
             <ContextFetch>
-               <Component {...pageProps} />
+               <AnimeContext>
+                  <Component {...pageProps} />
+               </AnimeContext>
             </ContextFetch>
          </AnimatePresence>
       </ChakraProvider>

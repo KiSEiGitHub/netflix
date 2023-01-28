@@ -29,18 +29,18 @@ export default function Home() {
          {!load && (
             <>
                <Section title='Appréciés sur Netflix' fullMovies={pop.two}>
-                  <Caroussel arrayFilm={pop.one} />
+                  <Caroussel arrayFilm={pop.one} id={1} />
                </Section>
                <Section title='Top des films' fullMovies={top.two}>
-                  <Top top={top.one} />
+                  <Top top={top.one} id={1} />
                </Section>
 
                <Section title='Upcoming movies' fullMovies={up.two}>
-                  <Caroussel arrayFilm={up.one} />
+                  <Caroussel arrayFilm={up.one} id={1} />
                </Section>
 
                <Section title='Séries TV' fullMovies={tv.two}>
-                  <Caroussel arrayFilm={tv.one} />
+                  <Caroussel arrayFilm={tv.one} id={1} />
                </Section>
             </>
          )}

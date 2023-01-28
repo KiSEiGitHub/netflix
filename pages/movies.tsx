@@ -19,7 +19,7 @@ export default function Movies({ genres }: any) {
    useEffect(() => {
       setTimeout(() => {
          setload(false);
-      }, 1500);
+      }, 2000);
    }, []);
 
    if (load) {
@@ -31,23 +31,23 @@ export default function Movies({ genres }: any) {
          {!load && (
             <>
                <Section title='Action' fullMovies={action.two}>
-                  <Caroussel arrayFilm={action.one} />
+                  <Caroussel arrayFilm={action.one} id={1} />
                </Section>
 
                <Section title='Aventure' fullMovies={aventure.two}>
-                  <Caroussel arrayFilm={aventure.one} />
+                  <Caroussel arrayFilm={aventure.one} id={1} />
                </Section>
 
                <Section title='Horror' fullMovies={horror.two}>
-                  <Caroussel arrayFilm={horror.one} />
+                  <Caroussel arrayFilm={horror.one} id={1} />
                </Section>
 
                <Section title='Animation' fullMovies={animation.two}>
-                  <Caroussel arrayFilm={animation.one} />
+                  <Caroussel arrayFilm={animation.one} id={1} />
                </Section>
 
                <Section title='Fantasy' fullMovies={fantasy.two}>
-                  <Caroussel arrayFilm={fantasy.one} />
+                  <Caroussel arrayFilm={fantasy.one} id={1} />
                </Section>
             </>
          )}

@@ -3,7 +3,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-function Top({ top }: any) {
+function Top({ top, id }: any) {
    return (
       <>
          <Swiper
@@ -74,7 +74,7 @@ function Top({ top }: any) {
                      >
                         <Image
                            alt='poster'
-                           src={item.img}
+                           src={id === 1 ? item.img : item.animeImg}
                            objectFit='cover'
                            w='full'
                            h='full'

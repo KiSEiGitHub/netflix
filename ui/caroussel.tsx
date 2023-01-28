@@ -1,13 +1,14 @@
-import { Box, Image, Text } from "@chakra-ui/react";
+import { Box, Image } from "@chakra-ui/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 interface CarousselProps {
    arrayFilm: Array<any>;
+   id: number;
 }
 
-function Caroussel({ arrayFilm }: CarousselProps) {
+function Caroussel({ arrayFilm, id }: CarousselProps) {
    return (
       <>
          <Swiper
@@ -67,7 +68,7 @@ function Caroussel({ arrayFilm }: CarousselProps) {
                      <Image
                         transition='0.3s ease-out'
                         _hover={{ transform: "scale(0.98)" }}
-                        src={item.img}
+                        src={id === 1 ? item.img : item.animeImg}
                         alt='ok'
                         w='full'
                         h='full'
