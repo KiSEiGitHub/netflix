@@ -3,8 +3,6 @@ import Caroussel from "@/ui/caroussel";
 import Layout from "@/ui/Layout";
 import Section from "@/ui/Section";
 import SkeletonHome from "@/ui/skeleton/home";
-import Top from "@/ui/Top";
-import { Box, Heading, HStack, Link, Tag } from "@chakra-ui/react";
 import { useContext, useEffect, useState } from "react";
 
 export default function Movies({ genres }: any) {
@@ -17,10 +15,30 @@ export default function Movies({ genres }: any) {
    const { fantasy } = useContext(fetchContext);
 
    useEffect(() => {
-      setTimeout(() => {
-         setload(false);
-      }, 2000);
-   }, []);
+      if (Object.keys(action).length > 0 && action.constructor === Object) {
+         if (
+            Object.keys(aventure).length > 0 &&
+            aventure.constructor === Object
+         ) {
+            if (
+               Object.keys(horror).length > 0 &&
+               horror.constructor === Object
+            ) {
+               if (
+                  Object.keys(animation).length > 0 &&
+                  animation.constructor === Object
+               ) {
+                  if (
+                     Object.keys(fantasy).length > 0 &&
+                     fantasy.constructor === Object
+                  ) {
+                     setload(false);
+                  }
+               }
+            }
+         }
+      }
+   }, [action, aventure, horror, animation, fantasy]);
 
    if (load) {
       return <SkeletonHome />;
@@ -59,8 +77,8 @@ export default function Movies({ genres }: any) {
    );
 }
 
-import { GetServerSideProps } from "next";
 import GenreNav from "@/components/GenreNav";
+import { GetServerSideProps } from "next";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
    const res = await fetch(
