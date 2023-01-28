@@ -9,7 +9,6 @@ import { useContext, useEffect, useState } from "react";
 export default function Animes() {
    const [load, setload] = useState(true);
    const { popular, action, aventure, mecha } = useContext(FetchContextAnime);
-   console.log(mecha);
 
    useEffect(() => {
       if (Object.keys(popular).length > 0 && popular.constructor === Object) {

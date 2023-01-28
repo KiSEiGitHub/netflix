@@ -28,8 +28,6 @@ const ItemNav = ({ children, href }: NavProps) => {
 };
 
 function Nav() {
-   const { colorMode, toggleColorMode } = useColorMode();
-
    return (
       <Flex
          w='100%'
@@ -49,14 +47,6 @@ function Nav() {
                <ItemNav href='/animes'>Animes</ItemNav>
             </HStack>
          </HStack>
-         <Button
-            onClick={toggleColorMode}
-            variant='outline'
-            size='sm'
-            borderRadius='full'
-         >
-            {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-         </Button>
       </Flex>
    );
 }
