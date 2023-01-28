@@ -17,9 +17,10 @@ import { Title } from "../Section";
 interface PropsModal {
    title: string;
    movies: Array<any>;
+   id: "movies" | "animes";
 }
 
-function ModalAllMovies({ title, movies }: PropsModal) {
+function ModalAllMovies({ title, movies, id }: PropsModal) {
    const { isOpen, onOpen, onClose } = useDisclosure();
    const [a, b, c] = movies;
 
@@ -54,7 +55,7 @@ function ModalAllMovies({ title, movies }: PropsModal) {
                                  _hover={{ transform: "scale(0.98)" }}
                                  transition='0.3s'
                                  alt='photo'
-                                 src={item.img}
+                                 src={id == "animes" ? item.animeImg : item.img}
                                  objectFit='cover'
                                  h='full'
                                  w='full'
@@ -68,7 +69,7 @@ function ModalAllMovies({ title, movies }: PropsModal) {
                                  _hover={{ transform: "scale(0.98)" }}
                                  transition='0.3s'
                                  alt='photo'
-                                 src={item.img}
+                                 src={id == "animes" ? item.animeImg : item.img}
                                  objectFit='cover'
                                  h='full'
                                  w='full'
@@ -82,7 +83,7 @@ function ModalAllMovies({ title, movies }: PropsModal) {
                                  _hover={{ transform: "scale(0.98)" }}
                                  transition='0.3s'
                                  alt='photo'
-                                 src={item.img}
+                                 src={id == "animes" ? item.animeImg : item.img}
                                  objectFit='cover'
                                  h='full'
                                  w='full'

@@ -9,31 +9,54 @@ const useFetchAnime = async (url: string) => {
    return data;
 };
 
+const useFetchAnimeGlobal = async (url: string) => {
+   let array: Array<any> = [];
+   for (let i = 1; i <= 4; i++) {
+      const res = await fetch(url + `?page=${i}`);
+      const data = await res.json();
+      array = [...array, data];
+   }
+
+   const [a, b, c, d] = array;
+   return {
+      one: a,
+      two: [b, c, d],
+   };
+};
+
 const AnimeContext = ({ children }: AnimeContext) => {
-   const [popular, setPopular] = useState<Array<any>>([]);
-   const [topAiring, setTopAiring] = useState<Array<any>>([]);
-   const [action, setAction] = useState<Array<any>>([]);
-   const [aventure, setAventure] = useState<Array<any>>([]);
-   const [demons, setDemons] = useState<Array<any>>([]);
-   const [ecchi, setEcchi] = useState<Array<any>>([]);
+   const [popular, setPopular] = useState<any>({});
+   const [topAiring, setTopAiring] = useState<any>({});
+   const [action, setAction] = useState<any>({});
+   const [aventure, setAventure] = useState<any>({});
+   const [demons, setDemons] = useState<any>({});
+   const [ecchi, setEcchi] = useState<any>({});
 
    const GetAnime = async () => {
-      setPopular(await useFetchAnime("https://gogoanime.consumet.org/popular"));
+      setPopular(
+         await useFetchAnimeGlobal("https://gogoanime.consumet.org/popular")
+      );
 
       setAction(
-         await useFetchAnime("https://gogoanime.consumet.org/genre/action")
+         await useFetchAnimeGlobal(
+            "https://gogoanime.consumet.org/genre/action"
+         )
       );
       setAventure(
-         await useFetchAnime("https://gogoanime.consumet.org/genre/adventure")
+         await useFetchAnimeGlobal(
+            "https://gogoanime.consumet.org/genre/adventure"
+         )
       );
       setDemons(
-         await useFetchAnime("https://gogoanime.consumet.org/genre/demons")
+         await useFetchAnimeGlobal(
+            "https://gogoanime.consumet.org/genre/demons"
+         )
       );
       setEcchi(
-         await useFetchAnime("https://gogoanime.consumet.org/genre/ecchi")
+         await useFetchAnimeGlobal("https://gogoanime.consumet.org/genre/ecchi")
       );
       setTopAiring(
-         await useFetchAnime("https://gogoanime.consumet.org/top-airing")
+         await useFetchAnimeGlobal("https://gogoanime.consumet.org/top-airing")
       );
    };
 

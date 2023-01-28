@@ -30,24 +30,28 @@ export default function Movies({ genres }: any) {
          <GenreNav title='Movies' />
          {!load && (
             <>
-               <Section title='Action' fullMovies={action.two}>
-                  <Caroussel arrayFilm={action.one} id={1} />
+               <Section title='Action' fullMovies={action.two} id='movies'>
+                  <Caroussel arrayFilm={action.one} id='movies' />
                </Section>
 
-               <Section title='Aventure' fullMovies={aventure.two}>
-                  <Caroussel arrayFilm={aventure.one} id={1} />
+               <Section title='Aventure' fullMovies={aventure.two} id='movies'>
+                  <Caroussel arrayFilm={aventure.one} id='movies' />
                </Section>
 
-               <Section title='Horror' fullMovies={horror.two}>
-                  <Caroussel arrayFilm={horror.one} id={1} />
+               <Section title='Horror' fullMovies={horror.two} id='movies'>
+                  <Caroussel arrayFilm={horror.one} id='movies' />
                </Section>
 
-               <Section title='Animation' fullMovies={animation.two}>
-                  <Caroussel arrayFilm={animation.one} id={1} />
+               <Section
+                  title='Animation'
+                  fullMovies={animation.two}
+                  id='movies'
+               >
+                  <Caroussel arrayFilm={animation.one} id='movies' />
                </Section>
 
-               <Section title='Fantasy' fullMovies={fantasy.two}>
-                  <Caroussel arrayFilm={fantasy.one} id={1} />
+               <Section title='Fantasy' fullMovies={fantasy.two} id='movies'>
+                  <Caroussel arrayFilm={fantasy.one} id='movies' />
                </Section>
             </>
          )}

@@ -15,10 +15,16 @@ export default function Home() {
    const { tv } = useContext(fetchContext);
 
    useEffect(() => {
-      setTimeout(() => {
-         setload(false);
-      }, 2000);
-   }, []);
+      if (Object.keys(pop).length > 0 && pop.constructor === Object) {
+         if (Object.keys(top).length > 0 && top.constructor === Object) {
+            if (Object.keys(up).length > 0 && up.constructor === Object) {
+               if (Object.keys(tv).length > 0 && tv.constructor === Object) {
+                  setload(false);
+               }
+            }
+         }
+      }
+   }, [pop, top, up, tv]);
 
    if (load) {
       return <SkeletonHome />;
@@ -28,19 +34,23 @@ export default function Home() {
       <Layout title='Home'>
          {!load && (
             <>
-               <Section title='Appréciés sur Netflix' fullMovies={pop.two}>
-                  <Caroussel arrayFilm={pop.one} id={1} />
+               <Section
+                  title='Appréciés sur Netflix'
+                  fullMovies={pop.two}
+                  id='movies'
+               >
+                  <Caroussel arrayFilm={pop.one} id='movies' />
                </Section>
-               <Section title='Top des films' fullMovies={top.two}>
+               <Section title='Top des films' fullMovies={top.two} id='movies'>
                   <Top top={top.one} id={1} />
                </Section>
 
-               <Section title='Upcoming movies' fullMovies={up.two}>
-                  <Caroussel arrayFilm={up.one} id={1} />
+               <Section title='Upcoming movies' fullMovies={up.two} id='movies'>
+                  <Caroussel arrayFilm={up.one} id='movies' />
                </Section>
 
-               <Section title='Séries TV' fullMovies={tv.two}>
-                  <Caroussel arrayFilm={tv.one} id={1} />
+               <Section title='Séries TV' fullMovies={tv.two} id='movies'>
+                  <Caroussel arrayFilm={tv.one} id='movies' />
                </Section>
             </>
          )}

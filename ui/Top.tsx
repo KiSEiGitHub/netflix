@@ -48,7 +48,7 @@ function Top({ top, id }: any) {
             }}
             className='mySwiper'
          >
-            {top.slice(0, 10).map((item: any, key: number) => (
+            {top.slice(0, 9).map((item: any, key: number) => (
                <SwiperSlide key={key}>
                   <Box h='200px' borderRadius='lg' pos='relative'>
                      <Heading

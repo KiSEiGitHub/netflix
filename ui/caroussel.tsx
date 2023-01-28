@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 interface CarousselProps {
    arrayFilm: Array<any>;
-   id: number;
+   id: "movies" | "animes";
 }
 
 function Caroussel({ arrayFilm, id }: CarousselProps) {
@@ -68,7 +68,7 @@ function Caroussel({ arrayFilm, id }: CarousselProps) {
                      <Image
                         transition='0.3s ease-out'
                         _hover={{ transform: "scale(0.98)" }}
-                        src={id === 1 ? item.img : item.animeImg}
+                        src={id == "movies" ? item.img : item.animeImg}
                         alt='ok'
                         w='full'
                         h='full'

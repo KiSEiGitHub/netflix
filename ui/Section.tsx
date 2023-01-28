@@ -7,6 +7,7 @@ interface SectionProps {
    children: React.ReactNode;
    title: string;
    fullMovies: Array<any>;
+   id: "movies" | "animes";
 }
 
 interface TitleProps {
@@ -57,11 +58,11 @@ export const Title = ({ children }: TitleProps) => {
    );
 };
 
-function Section({ children, title, fullMovies }: SectionProps) {
+function Section({ children, title, fullMovies, id }: SectionProps) {
    return (
       <Container maxW='100%' px={0}>
          <AnimatePresence>
-            <ModalAllMovies title={title} movies={fullMovies} />
+            <ModalAllMovies title={title} movies={fullMovies} id={id} />
          </AnimatePresence>
          {children}
       </Container>

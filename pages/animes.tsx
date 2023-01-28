@@ -16,13 +16,37 @@ export default function Animes() {
    const { aventure } = useContext(FetchContextAnime);
    const { demons } = useContext(FetchContextAnime);
    const { ecchi } = useContext(FetchContextAnime);
-   const { pop } = useContext(fetchContext);
 
    useEffect(() => {
-      setTimeout(() => {
-         setload(false);
-      }, 2500);
-   }, []);
+      if (Object.keys(popular).length > 0 && popular.constructor === Object) {
+         if (
+            Object.keys(aventure).length > 0 &&
+            aventure.constructor === Object
+         ) {
+            if (
+               Object.keys(demons).length > 0 &&
+               demons.constructor === Object
+            ) {
+               if (
+                  Object.keys(ecchi).length > 0 &&
+                  ecchi.constructor === Object
+               ) {
+                  if (
+                     Object.keys(action).length > 0 &&
+                     action.constructor === Object
+                  ) {
+                     if (
+                        Object.keys(topAiring).length > 0 &&
+                        topAiring.constructor === Object
+                     ) {
+                        setload(false);
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }, [popular, aventure, demons, ecchi, action, topAiring]);
 
    if (load) {
       return <SkeletonHome />;
@@ -31,23 +55,27 @@ export default function Animes() {
    return (
       <Layout title='Animes'>
          <GenreAnimeNav title='Anime' />
-         <Section title='Anime populaire' fullMovies={pop.two}>
-            <Caroussel arrayFilm={popular} id={2} />
+         <Section title='Animes populaire' fullMovies={popular.two} id='animes'>
+            <Caroussel arrayFilm={popular.one} id='animes' />
          </Section>
-         <Section title='Anime du moment' fullMovies={pop.two}>
-            <Top top={topAiring} id={2} />
+         <Section
+            title='Anime du moment'
+            fullMovies={topAiring.two}
+            id='animes'
+         >
+            <Top top={topAiring.one} id={2} />
          </Section>
-         <Section title='Action' fullMovies={pop.two}>
-            <Caroussel arrayFilm={action} id={2} />
+         <Section title='Aventure' fullMovies={aventure.two} id='animes'>
+            <Caroussel arrayFilm={aventure.one} id='animes' />
          </Section>
-         <Section title='Aventure' fullMovies={pop.two}>
-            <Caroussel arrayFilm={aventure} id={2} />
+         <Section title='Action' fullMovies={action.two} id='animes'>
+            <Caroussel arrayFilm={action.one} id='animes' />
          </Section>
-         <Section title='Demons' fullMovies={pop.two}>
-            <Caroussel arrayFilm={demons} id={2} />
+         <Section title='Demons' fullMovies={demons.two} id='animes'>
+            <Caroussel arrayFilm={demons.one} id='animes' />
          </Section>
-         <Section title='Ecchi' fullMovies={pop.two}>
-            <Caroussel arrayFilm={ecchi} id={2} />
+         <Section title='Ecchi' fullMovies={ecchi.two} id='animes'>
+            <Caroussel arrayFilm={ecchi.one} id='animes' />
          </Section>
       </Layout>
    );
