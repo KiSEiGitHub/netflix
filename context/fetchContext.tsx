@@ -2,6 +2,12 @@ import { createContext, useEffect, useState } from "react";
 
 export const fetchContext = createContext<any>(null);
 
+const useFetch = async (url: string) => {
+   const res = await fetch(url);
+   const { genres } = await res.json();
+   return genres;
+};
+
 const useFetchGlobal = async (url: string) => {
    // définit le tableau
    let array: Array<any> = [];
@@ -40,6 +46,7 @@ const ContextFetch = ({ children }: any) => {
    const [top, setTop] = useState<any>({});
    const [up, setUp] = useState<any>({});
    const [tv, setTv] = useState<any>({});
+   const [genres, setGenre] = useState<any>({});
 
    const [action, setAction] = useState<any>({});
    const [aventure, setAventure] = useState<any>({});
@@ -48,6 +55,11 @@ const ContextFetch = ({ children }: any) => {
    const [fantasy, setFantasy] = useState<any>({});
 
    const GetMovies = async () => {
+      setGenre(
+         await useFetch(
+            `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.NEXT_PUBLIC_APP_API_KEY}`
+         )
+      );
       setPop(
          await useFetchGlobal(
             `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_APP_API_KEY}`
@@ -119,6 +131,7 @@ const ContextFetch = ({ children }: any) => {
             horror,
             animation,
             fantasy,
+            genres,
          }}
       >
          {children}

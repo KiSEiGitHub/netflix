@@ -27,26 +27,7 @@ export default function Movies({ genres }: any) {
    }
    return (
       <Layout title='Movies'>
-         <Box
-            w='100%'
-            h='auto'
-            bg='dark.primary'
-            pos='sticky'
-            top={0}
-            zIndex={2}
-            pb={3}
-         >
-            <Heading variant='Title' pt={2}>
-               Movies
-            </Heading>
-            <HStack mt={3} spacing={2}>
-               {genres.map((item: any, key: number) => (
-                  <Tag key={key}>
-                     <Link href={`/genre/${item.id}`}>{item.name}</Link>
-                  </Tag>
-               ))}
-            </HStack>
-         </Box>
+         <GenreNav title='Movies' />
          {!load && (
             <>
                <Section title='Action' fullMovies={action.two}>
@@ -75,6 +56,7 @@ export default function Movies({ genres }: any) {
 }
 
 import { GetServerSideProps } from "next";
+import GenreNav from "@/components/GenreNav";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
    const res = await fetch(
