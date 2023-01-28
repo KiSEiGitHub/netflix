@@ -1,3 +1,4 @@
+import GenreAnimeNav from "@/components/GenreAnimeNav";
 import { fetchContext } from "@/context/fetchContext";
 import { FetchContextAnime } from "@/context/fetchContextAnime";
 import Caroussel from "@/ui/caroussel";
@@ -20,7 +21,7 @@ export default function Animes() {
    useEffect(() => {
       setTimeout(() => {
          setload(false);
-      }, 2000);
+      }, 2500);
    }, []);
 
    if (load) {
@@ -29,6 +30,7 @@ export default function Animes() {
 
    return (
       <Layout title='Animes'>
+         <GenreAnimeNav title='Anime' />
          <Section title='Anime populaire' fullMovies={pop.two}>
             <Caroussel arrayFilm={popular} id={2} />
          </Section>

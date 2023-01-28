@@ -2,6 +2,7 @@ import { fetchContext } from "@/context/fetchContext";
 import { Box, Heading, HStack, Link, Tag } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useContext } from "react";
+import { AnimeGenre } from "@/data/AnimeGenre";
 
 const NavItem = ({ children, href }: any) => {
    const { asPath } = useRouter();
@@ -15,9 +16,7 @@ const NavItem = ({ children, href }: any) => {
    );
 };
 
-export default function GenreNav({ title }: any) {
-   const { genres } = useContext(fetchContext);
-
+export default function GenreAnimeNav({ title }: any) {
    return (
       <Box
          w='100%'
@@ -32,9 +31,11 @@ export default function GenreNav({ title }: any) {
             {title}
          </Heading>
          <HStack mt={3} spacing={2}>
-            {genres.map((item: any, key: number) => (
+            {AnimeGenre.map((item: any, key: number) => (
                <Box key={key}>
-                  <NavItem href={`/genre/movie/${item.id}`}>{item.name}</NavItem>
+                  <NavItem href={`/genre/anime/${item.name}`}>
+                     {item.name}
+                  </NavItem>
                </Box>
             ))}
          </HStack>
