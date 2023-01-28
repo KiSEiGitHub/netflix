@@ -40,7 +40,9 @@ function Nav() {
          justifyContent='space-between'
       >
          <HStack spacing={8}>
-            <Image src='./assets/logo.png' alt='netflix-logo' w='83px' />
+            <Link href='/'>
+               <Image src='./assets/logo.png' alt='netflix-logo' w='83px' />
+            </Link>
             <HStack spacing={4}>
                <ItemNav href='/'>Home</ItemNav>
                <ItemNav href='/movies'>Movies</ItemNav>
