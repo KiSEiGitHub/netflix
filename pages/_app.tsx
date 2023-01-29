@@ -17,9 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
          <Nav />
          <AnimatePresence>
             <ContextFetch>
-               <AnimeContext>
-                  <Component {...pageProps} />
-               </AnimeContext>
+               <Component {...pageProps} />
             </ContextFetch>
          </AnimatePresence>
       </ChakraProvider>
